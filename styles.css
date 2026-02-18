@@ -1,0 +1,24 @@
+html, body { 
+    height: 100%; 
+    margin: 0;
+}
+
+body { display: flex; 
+    justify-content: center; 
+    align-items: center; 
+}
+
+#container {
+    background-color: lightgray; 
+    height: 70%; 
+    width: 30%; 
+}
+
+.display-screen {
+    text-align: right;
+    font-size: 3em;
+    width: 90%;
+    margin: 5vh auto;
+    padding: 6vh 0.5vw 0 0.5vw;
+    background-color: rgb(125, 175, 125);
+}
