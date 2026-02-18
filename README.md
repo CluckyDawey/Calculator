@@ -1,2 +1,2 @@
 # Calculator
-Requirement for theOdinProjects final project for the foundational course
+Requirement for theOdinProject's final project for the foundational course
