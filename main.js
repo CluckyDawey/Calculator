@@ -19,5 +19,12 @@ let secondNUm = 0;
 let selectedOperator = "";
 
 function operate(operator,num1,num2) {
-    
+
 }
+
+let display = document.getElementById("display-screen");
+const numbersPad = document.querySelectorAll(".nmbr")
+const clearNums = document.getElementById("clear")
+clearNums.addEventListener("click", () => display.textContent = "")
+
+numbersPad.forEach(pad => pad.addEventListener("click", () => display.textContent += pad.textContent))
