@@ -47,12 +47,3 @@ body { display: flex;
     flex-direction: column;
     gap: 1vh;
 }
-
-.row-4 {
-    display: flex;
-    justify-content: space-between;
-}
-
-.row-4 #nmbr-0 {
-    width: 66%;
-}
