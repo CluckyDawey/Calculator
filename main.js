@@ -49,9 +49,9 @@ operatorAdd.addEventListener("click", () => {
         nextNum = 0;
         isResultDisplayed = true;
         selectedOperator = "+";
-    } else if (selectedOperator == "+") {
-        nextNum = +display.textContent
-        total = operate(selectedOperator,total,nextNum);
+    } else if (selectedOperator == "+" && +display.textContent != total) {
+        nextNum = +display.textContent;
+        total = operate("+",total,nextNum);
         display.textContent = total;
         nextNum = 0;
         isResultDisplayed = true;
