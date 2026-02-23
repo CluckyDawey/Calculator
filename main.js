@@ -20,13 +20,11 @@ let selectedOperator = "";
 let isResultDisplayed = false
 
 function operate(operator,num1,num2) {
-    if (operator == "+") {
-        return sum(num1,num2)
-    };
+    if (operator == "+") return sum(num1,num2)
     if (operator == "-") return subtract(num1,num2);
     if (operator == "*") return multiply(num1,num2);
-    if (operator == "/") return divide(num1,num2);
-}
+    if (operator == "/") return divide(num1,num2)
+};
 
 function operatorDecide(operator) {
     if (total === 0) {
@@ -36,7 +34,7 @@ function operatorDecide(operator) {
     nextNum = +display.value;
     total = operate(selectedOperator, total, nextNum);
     isResultDisplayed = true;
-    selectedOperator = "+";
+    selectedOperator = operator;
     }
 
     display.placeholder = total;
@@ -84,6 +82,4 @@ numbersPad.forEach(pad => pad.addEventListener("click", () => {
     } else {
         display.value += pad.textContent
     }
-    
-    
 }))
