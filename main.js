@@ -40,19 +40,21 @@ const equalOperator = document.getElementById("equal");
 operatorAdd.addEventListener("click", () => {
     if (total == 0) {
         selectedOperator = "+";
-        total = +display.textContent;
-        display.textContent = "";
+        total = +display.value;
+        display.value = "0";
     } else if (selectedOperator != "+") {
-        nextNum = +display.textContent
+        nextNum = +display.value
         total = operate(selectedOperator,total,nextNum);
-        display.textContent = total;
+        display.placeholder = total;
+        display.value = ""
         nextNum = 0;
         isResultDisplayed = true;
         selectedOperator = "+";
-    } else if (selectedOperator == "+" && +display.textContent != total) {
-        nextNum = +display.textContent;
+    } else if (selectedOperator == "+") {
+        nextNum = +display.value;
         total = operate("+",total,nextNum);
-        display.textContent = total;
+        display.placeholder = total;
+        display.value = ""
         nextNum = 0;
         isResultDisplayed = true;
         selectedOperator = "+";
@@ -60,15 +62,23 @@ operatorAdd.addEventListener("click", () => {
 })
 
 clearNums.addEventListener("click", () => {
-    display.textContent = "";
+    display.value = "";
+    display.placeholder = 0
     total = 0;
     tempNum = 0;
 })
 
 numbersPad.forEach(pad => pad.addEventListener("click", () => {
     if (isResultDisplayed === true) {
-        display.textContent = "";
+        display.value = "0";
         isResultDisplayed = false;
     }
-    display.textContent += pad.textContent
+    if (display.value.length === 1 && display.value == 0) {
+        display.value = ""
+        display.value += +pad.textContent    
+    } else {
+        display.value += pad.textContent
+    }
+    
+    
 }))
