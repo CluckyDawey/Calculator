@@ -28,6 +28,22 @@ function operate(operator,num1,num2) {
     if (operator == "/") return divide(num1,num2);
 }
 
+function operatorDecide(operator) {
+    if (total === 0) {
+    selectedOperator = operator;
+    total = +display.value;
+    } else {
+    nextNum = +display.value;
+    total = operate(selectedOperator, total, nextNum);
+    isResultDisplayed = true;
+    selectedOperator = "+";
+    }
+
+    display.placeholder = total;
+    display.value = "";
+    nextNum = 0;
+}
+
 let display = document.getElementById("display-screen");
 const numbersPad = document.querySelectorAll(".nmbr");
 const clearNums = document.getElementById("clear");
@@ -35,30 +51,19 @@ const operatorAdd = document.getElementById("plus");
 const operatorMinus = document.getElementById("minus");
 const operatorMultiply = document.getElementById("multiply");
 const operatorDivide = document.getElementById("divide");
-const equalOperator = document.getElementById("equal");
+const equalOperator = document.getElementById("result");
 
-operatorAdd.addEventListener("click", () => {
-    if (total == 0) {
-        selectedOperator = "+";
-        total = +display.value;
-        display.value = "0";
-    } else if (selectedOperator != "+") {
+operatorAdd.addEventListener("click", () => {operatorDecide("+")})
+operatorMinus.addEventListener("click", () => {operatorDecide("-")})
+operatorMultiply.addEventListener("click", () => {operatorDecide("*")})
+operatorDivide.addEventListener("click", () => {operatorDecide("/")})
+equalOperator.addEventListener("click", () => {
+    if (nextNum == "") {
         nextNum = +display.value
-        total = operate(selectedOperator,total,nextNum);
-        display.placeholder = total;
-        display.value = ""
-        nextNum = 0;
-        isResultDisplayed = true;
-        selectedOperator = "+";
-    } else if (selectedOperator == "+") {
-        nextNum = +display.value;
-        total = operate("+",total,nextNum);
-        display.placeholder = total;
-        display.value = ""
-        nextNum = 0;
-        isResultDisplayed = true;
-        selectedOperator = "+";
-    }
+    };
+    total = operate(selectedOperator,total,nextNum)
+    display.placeholder = total
+    display.value = ""
 })
 
 clearNums.addEventListener("click", () => {
