@@ -11,6 +11,7 @@ function multiply(num1,num2) {
 }
 
 function divide(num1,num2) {
+    if (num2 === 0) return "ERROR";
     return num1 / num2
 }
 
@@ -62,6 +63,7 @@ equalOperator.addEventListener("click", () => {
     total = operate(selectedOperator,total,nextNum)
     display.placeholder = total
     display.value = ""
+    isResultDisplayed = true;
 })
 
 clearNums.addEventListener("click", () => {
@@ -72,6 +74,13 @@ clearNums.addEventListener("click", () => {
 })
 
 numbersPad.forEach(pad => pad.addEventListener("click", () => {
+    if (total === "ERROR") {
+        total = 0;
+        nextNum = 0;
+        isResultDisplayed = false;
+        selectedOperator = ""
+    }
+    
     if (isResultDisplayed === true) {
         display.value = "0";
         isResultDisplayed = false;
